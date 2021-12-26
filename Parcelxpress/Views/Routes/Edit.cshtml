@@ -1,0 +1,49 @@
+﻿@model Parcelxpress.Models.Route
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Route</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="RouteDate" class="control-label"></label>
+                <input asp-for="RouteDate" class="form-control" />
+                <span asp-validation-for="RouteDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriverID" class="control-label"></label>
+                <select asp-for="DriverID" class="form-control" asp-items="ViewBag.DriverID"></select>
+                <span asp-validation-for="DriverID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarID" class="control-label"></label>
+                <select asp-for="CarID" class="form-control" asp-items="ViewBag.CarID"></select>
+                <span asp-validation-for="CarID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AreaID" class="control-label"></label>
+                <select asp-for="AreaID" class="form-control" asp-items="ViewBag.AreaID"></select>
+                <span asp-validation-for="AreaID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

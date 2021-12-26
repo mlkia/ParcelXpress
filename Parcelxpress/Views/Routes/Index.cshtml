@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Parcelxpress.Models.Route>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All The Routes</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">Route Date</a>
+                
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]"> Driver Name</a>
+            </th>
+            <th>
+                Car Model
+            </th>
+            <th>
+                RegNumber
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Driver.FirstName)
+                @Html.DisplayFor(modelItem => item.Driver.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.RegNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
